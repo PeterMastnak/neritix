@@ -1,0 +1,37 @@
+{
+  "products": {
+    "ShelfCast-Vertical": {
+      "tiers": {
+        "sub-hour": { "monthly_eur": 4200, "annual_eur": 42000 },
+        "same-day": { "monthly_eur": 2400, "annual_eur": 22000 },
+        "delayed-72h": { "monthly_eur": 800, "annual_eur": 7500 }
+      },
+      "volume_estimates": {
+        "sub-hour": 12847,
+        "same-day": 11200,
+        "delayed-72h": 10100
+      },
+      "volume_unit": "profiles/month",
+      "enterprise": "on_request"
+    },
+    "ShelfCast-Benthic": {
+      "tiers": {
+        "sub-hour": { "monthly_eur": 3100, "annual_eur": 29000 },
+        "same-day": { "monthly_eur": 1800, "annual_eur": 17000 },
+        "delayed-72h": { "monthly_eur": 650, "annual_eur": 6000 }
+      },
+      "volume_estimates": {
+        "sub-hour": 48200,
+        "same-day": 44000,
+        "delayed-72h": 41000
+      },
+      "volume_unit": "points/month",
+      "enterprise": "on_request"
+    }
+  },
+  "volume_multipliers": {
+    "full_basin": 1.0,
+    "half_basin": 0.65,
+    "custom_area": "calculated"
+  }
+}

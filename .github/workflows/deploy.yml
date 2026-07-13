@@ -1,0 +1,54 @@
+name: Build and deploy to Neoserv
+
+# Runs on every push to main, and can be triggered manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Prevent overlapping deploys; let the newest push win.
+concurrency:
+  group: deploy-neoserv
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          # Public Mapbox token — required at build time or the map renders blank.
+          VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
+          # Contact form (optional). Leave the secrets unset to keep it in demo mode.
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+        run: npm run build
+
+      - name: Deploy dist/ to Neoserv over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Neoserv supports FTP over TLS. If your host rejects "ftps", change this to
+          # "ftp" (unencrypted) — see the deploy setup notes in the repo/PR description.
+          protocol: ftps
+          local-dir: ./dist/
+          # Target directory on the host. Usually your document root, e.g. public_html/.
+          # Set the FTP_SERVER_DIR secret to it (must end with a trailing slash).
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # .htaccess is a dotfile — make sure it is uploaded (SPA routing depends on it).
+          dangerous-clean-slate: false

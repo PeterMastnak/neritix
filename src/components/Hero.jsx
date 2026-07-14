@@ -134,7 +134,7 @@ export default function Hero() {
             className="px-6 py-3 bg-accent-teal text-bg font-medium rounded cursor-pointer
                        hover:bg-[#00b3a1] transition-colors text-sm"
           >
-            Explore Data Products
+            Explore Data Productssssss
           </Link>
           <button
             onClick={openModal}

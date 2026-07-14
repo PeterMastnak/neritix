@@ -43,9 +43,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Neoserv supports FTP over TLS. If your host rejects "ftps", change this to
-          # "ftp" (unencrypted) — see the deploy setup notes in the repo/PR description.
-          protocol: ftps
+          # Host is configured for plain FTP. If you later enable FTP over TLS on the
+          # Neoserv account (more secure), change this to "ftps".
+          protocol: ftp
           local-dir: ./dist/
           # Target directory on the host. Usually your document root, e.g. public_html/.
           # Set the FTP_SERVER_DIR secret to it (must end with a trailing slash).

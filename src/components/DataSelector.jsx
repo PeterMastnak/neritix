@@ -539,7 +539,7 @@ export default function DataSelector() {
           transition={{ duration: 0.5 }}
           className="font-heading text-3xl sm:text-4xl font-bold text-text-primary text-center mb-4"
         >
-          Explore Data Productssssss
+          Explore Data Products
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}

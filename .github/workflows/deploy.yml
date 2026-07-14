@@ -47,8 +47,10 @@ jobs:
           # Neoserv account (more secure), change this to "ftps".
           protocol: ftp
           local-dir: ./dist/
-          # Target directory on the host. Usually your document root, e.g. public_html/.
-          # Set the FTP_SERVER_DIR secret to it (must end with a trailing slash).
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # The FTP account (neritix@neritix.com) logs in directly AT the site's web root,
+          # so we deploy to "./" (NOT public_html/ — that would create a subfolder inside
+          # the docroot). If you ever switch to an FTP account that lands in the home dir
+          # above the web root, change this to public_html/.
+          server-dir: ./
           # .htaccess is a dotfile — make sure it is uploaded (SPA routing depends on it).
           dangerous-clean-slate: false

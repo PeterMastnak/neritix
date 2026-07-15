@@ -60,7 +60,7 @@ export default function DataPipeline() {
           transition={{ duration: 0.5 }}
           className="font-heading text-3xl sm:text-4xl font-bold text-text-primary text-center mb-4"
         >
-          From Ocean Floor to Data Product2
+          From Ocean Floor to Data Product
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}

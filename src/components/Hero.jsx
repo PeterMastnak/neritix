@@ -174,20 +174,20 @@ export default function Hero() {
           offset={-64}
           duration={700}
           aria-label="Scroll down to learn about Neritix"
-          className="group flex cursor-pointer flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-text-muted transition-colors hover:text-accent-teal"
+          className="group flex cursor-pointer flex-col items-center gap-2 font-mono text-xs uppercase tracking-[0.24em] text-text-muted transition-colors hover:text-accent-teal sm:text-sm"
         >
           <span>Scroll down</span>
-          <span className="relative flex h-11 w-px justify-center overflow-hidden bg-border">
+          <span className="relative flex h-[22px] w-px justify-center overflow-hidden bg-border">
             <motion.span
               aria-hidden="true"
               className="absolute top-0 h-2 w-2 rounded-full bg-accent-teal shadow-[0_0_12px_rgba(0,200,180,0.85)]"
-              animate={{ y: [-8, 36] }}
+              animate={{ y: [-8, 14] }}
               transition={{ duration: 1.7, repeat: Infinity, ease: 'easeInOut' }}
             />
           </span>
           <svg
             aria-hidden="true"
-            className="h-3 w-3 text-accent-teal transition-transform duration-300 group-hover:translate-y-1"
+            className="h-6 w-6 text-accent-teal transition-transform duration-300 group-hover:translate-y-1"
             viewBox="0 0 12 12"
             fill="none"
           >
